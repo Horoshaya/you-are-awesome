@@ -1,24 +1,24 @@
 // DO WHATEVER YOU WANT HERE
-let count = 0;
-let asyncCount = 0;
 const createEnumerableProperty = () => {};
 const createNotEnumerableProperty = () => { return Symbol()}; //propertyName = value
 const createProtoMagicObject = () => { return Function};
+                                      
+let count = 0;
 const incrementor = () => {count++; return incrementor};
 incrementor.valueOf = () => count;
 
+let asyncCount = 0;
 const asyncIncrementor = () => {return ++asyncCount};
 const createIncrementer = () => {
     let count = 0;
     function* next() {while (true) yield ++count}
-    return next()
+    return next();
 };
 // return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = (value) => {     
     return new Promise((a) => {setTimeout(() => {a(value);}, 1000)});
 };
-
-const getDeepPropertiesCount = (obj) => 
+const getDeepPropertiesCount = (obj) => {
     let count = 0;
     for (key in obj) {
         count++;
@@ -26,7 +26,7 @@ const getDeepPropertiesCount = (obj) =>
     };
     return count;
 };
-const createSerializedObject = () =>  return null;
+const createSerializedObject = () =>  {return null;}
 const sortByProto = (arr) =>  {return arr.sort((a, b) => b.__proto__ - a.__proto__)};
 
 exports.createEnumerableProperty = createEnumerableProperty;
