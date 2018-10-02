@@ -18,10 +18,16 @@ const returnBackInSecond = (value) => {
     return new Promise((a) => {setTimeout(() => {a(value);}, 1000)});
 };
 
-const getDeepPropertiesCount = () => {};
-const createSerializedObject = () => {};
-const toBuffer = () => {};
-const sortByProto = () => {};
+const getDeepPropertiesCount = (obj) => 
+    let count = 0;
+    for (key in obj) {
+        count++;
+        count += getDeepPropertiesCount(obj[key]);
+    };
+    return count;
+};
+const createSerializedObject = () =>  return null;
+const sortByProto = (arr) =>  {return arr.sort((a, b) => b.__proto__ - a.__proto__)};
 
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;
